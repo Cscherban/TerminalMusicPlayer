@@ -6,6 +6,8 @@
 #define UNTITLED5_MUSICPLAYER_H
 #include<string>
 #include<vector>
+#include <boost/filesystem.hpp>
+using namespace boost::filesystem;
 class MusicPlayer {
 private:
     struct Song{
@@ -26,6 +28,9 @@ private:
     std::string current_album = "";
     std::string current_artist = "";
     std::vector<Artist> artists;
+    std::vector<Album> albums;
+    std::vector<Song> songs;
+    void iterate_through_directory(path &p);
 public:
     MusicPlayer(std::string Dir);
     void skip();
