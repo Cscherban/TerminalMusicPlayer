@@ -3,7 +3,7 @@ project(TerminalMusicPlayer)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp MusicPlayer.cpp MusicPlayer.h)
+set(SOURCE_FILES main.cpp MusicPlayer.cpp MusicPlayer.h InvalidSearchException.cpp InvalidSearchException.h)
 add_executable(TerminalMusicPlayer ${SOURCE_FILES})
 
 find_package(Boost COMPONENTS system filesystem REQUIRED)

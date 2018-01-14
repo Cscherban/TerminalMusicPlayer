@@ -5,6 +5,8 @@
 #include <algorithm>    // std::sort
 #include <boost/algorithm/string.hpp> //to split some strings
 #include "MusicPlayer.h"
+#include "InvalidSearchException.h"
+
 using namespace boost::filesystem;
 
 #include <boost/algorithm/string.hpp>
@@ -153,8 +155,10 @@ void MusicPlayer::playAlbum(Album a){
  * @param s pretty obvious isn't it?
  */
 void MusicPlayer::playSong(Song s){
-   // system(("afplay " + s.path).c_str());
+    system(("afplay " + s.path).c_str());
 }
+
+
 
 
 /**
@@ -162,14 +166,14 @@ void MusicPlayer::playSong(Song s){
  * @param querry : The name of the song you are looking for
  * @return The song desired or null if nothign is found
  */
-Song findSong(std::string querry){
+MusicPlayer::Song MusicPlayer::findSong(std::string querry){
     for(Song s: songs){
         if(querry == s.name){
             return s;
         }
     }
+    throw InvalidSearchException("The Song you searched for does not exist", querry.c_str());
 
-    return null;
 }
 
 /**
@@ -177,13 +181,14 @@ Song findSong(std::string querry){
  * @param querry , the name of the album you are searching for
  * @return the album you wanted, or null if nothign is found
  */
-Album findAlbum(std::string querry){
+MusicPlayer::Album MusicPlayer::findAlbum(std::string querry){
     for(Album a: albums){
         if(querry == a.name){
             return a;
         }
     }
-    return null;
+    throw InvalidSearchException("The Album you searched for does not exist", querry.c_str());
+
 }
 
 
@@ -192,13 +197,14 @@ Album findAlbum(std::string querry){
  * @param querry the name of the artist you are wishing to find
  * @return the Artist that you want to find, or null if nothign is found
  */
-Artist findArtist(std::string querry){
+MusicPlayer::Artist MusicPlayer::findArtist(std::string querry){
     for(Artist a: artists){
         if(querry == a.name){
             return a;
         }
     }
-    return null;
+    throw InvalidSearchException("The Artist you searched for does not exist", querry.c_str());
+
 }
 
 

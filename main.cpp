@@ -1,8 +1,10 @@
 
 
 #include"MusicPlayer.h"
-
+#include"InvalidSearchException.h"
+#include<iostream>
 using namespace boost::filesystem;
+
 
 
 

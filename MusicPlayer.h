@@ -9,7 +9,9 @@
 #include <boost/filesystem.hpp>
 using namespace boost::filesystem;
 class MusicPlayer {
-private:
+
+
+public:
     struct Song{
         std::string name;
         std::string path;
@@ -22,6 +24,21 @@ private:
         std::string name;
         std::vector<Album> albums;
     };
+    std::vector<Artist> artists;
+    MusicPlayer(std::string Dir);
+    void stop();
+    void playArtist(Artist a );
+    void playAlbum(Album a );
+    void playSong(Song s);
+
+    Song findSong(std::string querry);
+    Album findAlbum(std::string name);
+    Artist findArtist(std::string name);
+
+
+
+private:
+
     bool isPlaying = false;
 
 
@@ -31,18 +48,6 @@ private:
     void iterate_through_directory(path &p);
     std::string extract_artist(std::string);
     std::string extract_album(std::string);
-public:
-    std::vector<Artist> artists;
-    MusicPlayer(std::string Dir);
-    void stop();
-    void playArtist(Artist a );
-    void playAlbum(Album a );
-    void playSong(Song s);
-    Song findsong(std::string name);
-    Album findAlbum(std::string name);
-    Artist findArtist(std::string name);
-
-
 
 };
 
