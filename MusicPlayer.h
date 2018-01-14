@@ -23,19 +23,18 @@ private:
         std::vector<Album> albums;
     };
     bool isPlaying = false;
-    std::string MODE = "";
-    std::string current_song = "";
-    std::string current_album = "";
-    std::string current_artist = "";
-    std::vector<Artist> artists;
+
+
     std::vector<Album> albums;
     std::vector<Song> songs;
+
     void iterate_through_directory(path &p);
+    std::string extract_artist(std::string);
+    std::string extract_album(std::string);
 public:
+    std::vector<Artist> artists;
     MusicPlayer(std::string Dir);
-    void skip();
-    void replay();
-    void previous();
+    void stop();
     void playArtist(Artist a );
     void playAlbum(Album a );
     void playSong(Song s);
